@@ -11,12 +11,12 @@ export const _googleAuth = async () => {
     const userData = await firestore(app).collection("users").doc(user.uid).get();
     if (!userData.exists) {
       await firestore(app).collection("users").doc(user.uid).set({
-        type: "user",
+        type: "USER",
       });
     }
     return {
       user,
-      type: userData?.type ?? "users",
+      type: userData.data()?.type ?? "USER",
     };
   } catch (_err) {
     return null;

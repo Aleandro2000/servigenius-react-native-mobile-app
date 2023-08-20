@@ -23,6 +23,7 @@ module.exports = {
     "global-require": 0,
     "max-len": 0,
     "dot-notation": 0,
+    "no-await-in-loop": 0,
     "import/no-import-module-exports": 0,
     "react/no-unstable-nested-components": 0,
     "react/prop-types": 0,

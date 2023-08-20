@@ -16,7 +16,7 @@ export default function ContactScreen() {
   const handleLogout = () => {
     _logout().then((result) => {
       if (result) {
-        setCurrentUser();
+        setCurrentUser(null);
         reset("Home");
       }
     }).catch(() => {});
@@ -25,10 +25,15 @@ export default function ContactScreen() {
   return (
     <ScrollView>
       <Center flex={1}>
-        <Container my={3} justifyContent="center" alignItems="center">
+        <Container width="xl" my={3} justifyContent="center" alignItems="center">
           <Button my={2} onPress={handleLogout} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               LOGOUT
+            </Text>
+          </Button>
+          <Button my={2} onPress={() => push("Home")} backgroundColor={sgred1}>
+            <Text color={sgwhite1} bold>
+              Home
             </Text>
           </Button>
           <Button my={2} onPress={() => push("Service")} backgroundColor={sgred1}>
@@ -36,11 +41,22 @@ export default function ContactScreen() {
               Service
             </Text>
           </Button>
-          <Button my={2} onPress={() => push("Add&Edit Post")} backgroundColor={sgred1}>
-            <Text color={sgwhite1} bold>
-              ADD POST
-            </Text>
-          </Button>
+          {
+            currentUser?.type === "ADMIN" ? (
+              <Button
+                my={2}
+                onPress={() => push("Add&Edit Post", {
+                  postId: null,
+                  post: null,
+                })}
+                backgroundColor={sgred1}
+              >
+                <Text color={sgwhite1} bold>
+                  ADD POST
+                </Text>
+              </Button>
+            ) : null
+          }
           {
             data?.filter((item) => item?.post?.type === "CONTACT")?.map((item, key) => (
               <CardTemplate
@@ -48,6 +64,8 @@ export default function ContactScreen() {
                 coverImage={item?.postImage}
                 title={item?.post?.title}
                 text={item?.post?.text}
+                type={item?.post?.type}
+                postId={item?.postId}
               />
             ))
           }

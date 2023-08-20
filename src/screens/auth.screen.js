@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { sgred1, sgwhite1 } from "../utils/colors";
 import { _googleAuth } from "../firebase/auth";
 import { UserContext } from "../contexts/user.context";
-import { reset } from "../utils/navigation";
+import { push } from "../utils/navigation";
 
 export default function AuthScreen() {
   const [, setCurrentUser] = useContext(UserContext);
@@ -14,7 +14,7 @@ export default function AuthScreen() {
     _googleAuth().then((user) => {
       if (user) {
         setCurrentUser(user);
-        reset("Service");
+        push("Service");
       }
     }).catch(() => {});
   };

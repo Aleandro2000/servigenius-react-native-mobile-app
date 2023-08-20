@@ -1,6 +1,7 @@
 import { NativeBaseProvider } from "native-base";
 import React, { useEffect, useState } from "react";
 import { LogBox } from "react-native";
+import { AlertNotificationRoot } from "react-native-alert-notification";
 import SplashScreen from "./src/screens/splash.screen";
 import "react-native-gesture-handler";
 import { UserContext } from "./src/contexts/user.context";
@@ -25,12 +26,14 @@ export default function App() {
   }, []);
 
   return (
-    <DataContext.Provider value={[data, setData]}>
-      <UserContext.Provider value={[currentUser, setCurrentUser]}>
-        <NativeBaseProvider>
-          <SplashScreen />
-        </NativeBaseProvider>
-      </UserContext.Provider>
-    </DataContext.Provider>
+    <AlertNotificationRoot>
+      <DataContext.Provider value={[data, setData]}>
+        <UserContext.Provider value={[currentUser, setCurrentUser]}>
+          <NativeBaseProvider>
+            <SplashScreen />
+          </NativeBaseProvider>
+        </UserContext.Provider>
+      </DataContext.Provider>
+    </AlertNotificationRoot>
   );
 }
