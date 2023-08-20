@@ -20,7 +20,6 @@ export const savePost = async (postId, title, text, type, imageUri) => {
         type,
       });
     }
-    console.log(imageUri);
     if (!isFirebaseStorageLink(imageUri)) {
       const imageRef = storage(app).ref(`ost_images/${newPostId}`);
       await imageRef.putFile(imageUri);
@@ -44,7 +43,6 @@ export const savePost = async (postId, title, text, type, imageUri) => {
       postId: newPostId,
     };
   } catch (error) {
-    console.log(error);
     return false;
   }
 };

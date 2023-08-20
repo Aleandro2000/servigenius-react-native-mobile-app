@@ -43,18 +43,6 @@ export default function EditScreen({
         });
         setLoading(false);
         if (postId) {
-          console.log(data?.map((item) => {
-            if (item?.postId === postId) {
-              return {
-                ...item,
-                ...{
-                  post: result.post,
-                  postImage: result.postImage,
-                },
-              };
-            }
-            return item;
-          }));
           setData(data?.map((item) => {
             if (item?.postId === postId) {
               return {
