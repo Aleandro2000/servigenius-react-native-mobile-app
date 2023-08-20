@@ -8,18 +8,26 @@ export const _googleAuth = async () => {
     const { idToken } = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     const { user } = await auth(app).signInWithCredential(googleCredential);
-    const userData = await firestore(app).collection(user.uid).get();
-    if (!userData) {
-      await firestore(app).collection("USERS").doc(user.uid).update({
-        type: "USER",
+    const userData = await firestore(app).collection("users").doc(user.uid).get();
+    if (!userData.exists) {
+      await firestore(app).collection("users").doc(user.uid).set({
+        type: "user",
       });
     }
     return {
       user,
-      type: userData?.type ?? "USER",
+      type: userData?.type ?? "users",
     };
   } catch (_err) {
-    console.log(_err);
     return null;
+  }
+};
+
+export const _logout = async () => {
+  try {
+    await auth(app).signOut();
+    return true;
+  } catch (_err) {
+    return false;
   }
 };

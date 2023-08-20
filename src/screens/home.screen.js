@@ -1,12 +1,15 @@
 import {
   Button, Center, Container, ScrollView, Text,
 } from "native-base";
-import React from "react";
+import React, { useContext } from "react";
 import CardTemplate from "../templates/card.template";
 import { sgred1, sgwhite1 } from "../utils/colors";
 import { push } from "../utils/navigation";
+import { DataContext } from "../contexts/data.context";
 
 export default function HomeScreen() {
+  const [data] = useContext(DataContext);
+
   return (
     <ScrollView>
       <Center flex={1}>
@@ -16,21 +19,16 @@ export default function HomeScreen() {
               Authenticate
             </Text>
           </Button>
-          <CardTemplate
-            coverImage="https://placekitten.com/200/300"
-            title="Sample Card Title"
-            text="This is a sample card description."
-          />
-          <CardTemplate
-            coverImage="https://placekitten.com/200/300"
-            title="Sample Card Title"
-            text="This is a sample card description."
-          />
-          <CardTemplate
-            coverImage="https://placekitten.com/200/300"
-            title="Sample Card Title"
-            text="This is a sample card description."
-          />
+          {
+            data?.filter((item) => item?.post?.type === "HOME")?.map((item, key) => (
+              <CardTemplate
+                key={`Item ${key + 1}`}
+                coverImage={item?.postImage}
+                title={item?.post?.title}
+                text={item?.post?.text}
+              />
+            ))
+          }
         </Container>
       </Center>
     </ScrollView>

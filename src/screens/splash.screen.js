@@ -11,6 +11,7 @@ import ServiceScreen from "./service.screen";
 import ContactScreen from "./contact.screen";
 import AuthScreen from "./auth.screen";
 import { navigationRef } from "../utils/navigation";
+import EditScreen from "./edit.screen";
 
 const Stack = createStackNavigator();
 
@@ -80,6 +81,7 @@ export default function SplashScreen() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Service" component={ServiceScreen} />
         <Stack.Screen name="Contact" component={ContactScreen} />
+        <Stack.Screen name="Add&Edit Post" component={EditScreen} />
         <Stack.Screen name="Authentication" component={AuthScreen} />
       </Stack.Navigator>
     </NavigationContainer>
