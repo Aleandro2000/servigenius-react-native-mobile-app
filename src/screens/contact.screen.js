@@ -26,17 +26,17 @@ export default function ContactScreen() {
     <ScrollView>
       <Center flex={1}>
         <Container width="xl" my={3} justifyContent="center" alignItems="center">
-          <Button my={2} onPress={handleLogout} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={handleLogout} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               LOGOUT
             </Text>
           </Button>
-          <Button my={2} onPress={() => push("Home")} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={() => push("Home")} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               Home
             </Text>
           </Button>
-          <Button my={2} onPress={() => push("Service")} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={() => push("Service")} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               Service
             </Text>
@@ -45,6 +45,7 @@ export default function ContactScreen() {
             currentUser?.type === "ADMIN" ? (
               <Button
                 my={2}
+                w="full"
                 onPress={() => push("Add&Edit Post", {
                   postId: null,
                   post: null,

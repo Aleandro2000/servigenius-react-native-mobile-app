@@ -19,24 +19,24 @@ export default function ServiceScreen() {
         setCurrentUser(null);
         reset("Home");
       }
-    }).catch(() => {});
+    }).catch(() => { });
   };
 
   return (
     <ScrollView>
       <Center flex={1}>
         <Container width="xl" my={3} justifyContent="center" alignItems="center">
-          <Button my={2} onPress={handleLogout} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={handleLogout} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               LOGOUT
             </Text>
           </Button>
-          <Button my={2} onPress={() => push("Home")} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={() => push("Home")} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               Home
             </Text>
           </Button>
-          <Button my={2} onPress={() => push("Contact")} backgroundColor={sgred1}>
+          <Button w="full" my={2} onPress={() => push("Contact")} backgroundColor={sgred1}>
             <Text color={sgwhite1} bold>
               Contact
             </Text>
@@ -44,6 +44,7 @@ export default function ServiceScreen() {
           {
             currentUser?.type === "ADMIN" ? (
               <Button
+                w="full"
                 my={2}
                 onPress={() => push("Add&Edit Post", {
                   postId: null,

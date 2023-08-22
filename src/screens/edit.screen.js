@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import {
-  Button, TextArea, Input, Text, ScrollView,
+  Button, TextArea, Input, Text, ScrollView, Box,
 } from "native-base";
 import { launchImageLibrary } from "react-native-image-picker";
 import { Picker } from "@react-native-picker/picker";
@@ -73,18 +73,20 @@ export default function EditScreen({
       <Button backgroundColor={sgred1} onPress={handleChooseImage}>
         <Text color={sgwhite1}>{!imageUri ? "Choose Image" : "Uploaded"}</Text>
       </Button>
-      <Input defaultValue={title} onChangeText={handleChange(setTitle)} my={1} p={3} _focus={{ borderColor: sgred1, bg: sgwhite1 }} borderWidth={2} borderRadius={10} placeholder="Title" />
-      <TextArea defaultValue={text} onChangeText={handleChange(setText)} my={1} p={3} _focus={{ borderColor: sgred1, bg: sgwhite1 }} borderWidth={2} borderRadius={10} placeholder="Text" />
-      <Picker
-        placeholder="Type"
-        selectedValue={type}
-        onValueChange={(itemValue) => setType(itemValue)}
-      >
-        <Picker.Item label="Select Type" value="" />
-        <Picker.Item label="HOME" value="HOME" />
-        <Picker.Item label="SERVICE" value="SERVICE" />
-        <Picker.Item label="CONTACT" value="CONTACT" />
-      </Picker>
+      <Input defaultValue={title} onChangeText={handleChange(setTitle)} my={1} p={3} _focus={{ borderColor: sgred1, bg: sgwhite1 }} borderColor={sgred1} borderWidth={2} borderRadius={10} placeholder="Title" />
+      <TextArea defaultValue={text} onChangeText={handleChange(setText)} my={1} p={3} _focus={{ borderColor: sgred1, bg: sgwhite1 }} borderColor={sgred1} borderWidth={2} borderRadius={10} placeholder="Text" />
+      <Box my={1} p={3} borderColor={sgred1} borderWidth={2} borderRadius={10}>
+        <Picker
+          placeholder="Type"
+          selectedValue={type}
+          onValueChange={(itemValue) => setType(itemValue)}
+        >
+          <Picker.Item label="Select Type" value="" />
+          <Picker.Item label="HOME" value="HOME" />
+          <Picker.Item label="SERVICE" value="SERVICE" />
+          <Picker.Item label="CONTACT" value="CONTACT" />
+        </Picker>
+      </Box>
       <Button backgroundColor={sgred1} onPress={handleSavePost}>
         <Text color={sgwhite1}>
           {!loading ? "Save Post" : "Loading..."}

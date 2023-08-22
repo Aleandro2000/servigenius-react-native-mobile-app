@@ -28,19 +28,19 @@ export default function HomeScreen() {
         <Container width="xl" my={3} justifyContent="center" alignItems="center">
           {
             !currentUser ? (
-              <Button onPress={() => push("Authentication")} backgroundColor={sgred1}>
+              <Button w="full" onPress={() => push("Authentication")} backgroundColor={sgred1}>
                 <Text color={sgwhite1} bold>
                   Authenticate
                 </Text>
               </Button>
             ) : (
               <>
-                <Button my={2} onPress={() => push("Contact")} backgroundColor={sgred1}>
+                <Button w="full" my={2} onPress={() => push("Contact")} backgroundColor={sgred1}>
                   <Text color={sgwhite1} bold>
                     Contact
                   </Text>
                 </Button>
-                <Button my={2} onPress={() => push("Service")} backgroundColor={sgred1}>
+                <Button w="full" my={2} onPress={() => push("Service")} backgroundColor={sgred1}>
                   <Text color={sgwhite1} bold>
                     Service
                   </Text>
@@ -48,6 +48,7 @@ export default function HomeScreen() {
                 {
                   currentUser?.type === "ADMIN" ? (
                     <Button
+                      w="full"
                       my={2}
                       onPress={() => push("Add&Edit Post", {
                         postId: null,
@@ -61,7 +62,7 @@ export default function HomeScreen() {
                     </Button>
                   ) : null
                 }
-                <Button my={2} onPress={handleLogout} backgroundColor={sgred1}>
+                <Button w="full" my={2} onPress={handleLogout} backgroundColor={sgred1}>
                   <Text color={sgwhite1} bold>
                     LOGOUT
                   </Text>

@@ -39,7 +39,7 @@ export default function CardTemplate({
     >
       {
         currentUser?.type === "ADMIN" ? (
-          <Button disabled={loading} onPress={handleDelete} background={sgred1}>
+          <Button mb={5} disabled={loading} onPress={handleDelete} background={sgred1}>
             <Text color={sgwhite1}>
               {!loading ? "DELETE" : "WAITING..."}
             </Text>
@@ -59,6 +59,7 @@ export default function CardTemplate({
         currentUser?.type === "ADMIN" ? (
           <Button
             disabled={loading}
+            mt={10}
             onPress={() => push("Add&Edit Post", {
               post: {
                 title,
