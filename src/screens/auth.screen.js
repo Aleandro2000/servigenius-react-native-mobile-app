@@ -1,5 +1,5 @@
 import {
-  Button, Center, ScrollView, Text,
+  Button, Center, Container, ScrollView, Text,
 } from "native-base";
 import React, { useContext } from "react";
 import { sgred1, sgwhite1 } from "../utils/colors";
@@ -16,17 +16,19 @@ export default function AuthScreen() {
         setCurrentUser(user);
         push("Service");
       }
-    }).catch(() => {});
+    }).catch(() => { });
   };
 
   return (
     <ScrollView>
       <Center my={5}>
-        <Button onPress={handleAuth} backgroundColor={sgred1}>
-          <Text color={sgwhite1} bold>
-            Use with Google
-          </Text>
-        </Button>
+        <Container width="xl" my={3} justifyContent="center" alignItems="center">
+          <Button w="full" onPress={handleAuth} backgroundColor={sgred1}>
+            <Text color={sgwhite1} bold>
+              Use with Google
+            </Text>
+          </Button>
+        </Container>
       </Center>
     </ScrollView>
   );
